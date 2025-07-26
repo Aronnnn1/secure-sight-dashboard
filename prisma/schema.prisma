@@ -17,7 +17,7 @@ model Camera {
   id        Int        @id @default(autoincrement())
   name      String
   location  String
-  incidents Incident[]  // 1-to-many relationship
+  incidents Incident[] 
 }
 
 model Incident {
