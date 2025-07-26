@@ -14,6 +14,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const navItems = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboardIcon },
@@ -31,7 +32,7 @@ export default function Navbar() {
       
       {/* Left - Logo & Brand */}
       <div className="flex items-center gap-2 text-2xl font-bold tracking-tight text-white">
-        <img src="/logo.png" alt="Logo" className="w-8 h-8" />
+        <Image src="/logo.png" alt="Logo" width={40} height={40} className="w-8 h-8" />
         Mandlacx
       </div>
 

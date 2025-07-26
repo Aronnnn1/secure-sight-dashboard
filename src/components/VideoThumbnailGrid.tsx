@@ -7,12 +7,12 @@ export default function VideoThumbnailGrid({
   videos,
   onSelect,
   onResolve,
-  selectedId,
+  // selectedId,
 }: {
   videos: Video[];
   onSelect: (video: Video) => void;
   onResolve: (id: number) => void;
-  selectedId?: number;
+  // selectedId?: number;
 }) {
   return (
     <div className="flex flex-col gap-4">
