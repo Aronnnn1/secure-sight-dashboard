@@ -56,7 +56,7 @@ export default function Dashboard() {
     if (!selectedIncident || !newVisible.some((v) => v.id === selectedIncident.id)) {
       setSelectedIncident(newVisible[0] || null);
     }
-  }, [showResolved, videos]);
+  }, [selectedIncident, showResolved, videos]);
 
   const selectedIndex = visibleVideos.findIndex((v) => v.id === selectedIncident?.id);
   const nextTwoVideos = selectedIndex >= 0 ? visibleVideos.slice(selectedIndex + 1, selectedIndex + 3) : [];
@@ -109,7 +109,7 @@ export default function Dashboard() {
               additionalVideos={nextTwoVideos}
               onSelect={(video) => setSelectedIncident(video)}
               setIsPlaying={setIsPlaying}
-              setPlaybackRate={setPlaybackRate}
+              // setPlaybackRate={setPlaybackRate}
               videoRef={videoRef}
             />
           )}
@@ -141,7 +141,7 @@ export default function Dashboard() {
             videos={visibleVideos}
             onSelect={(video) => setSelectedIncident(video)}
             onResolve={(id) => resolveIncident(id)}
-            selectedId={selectedIncident?.id}
+            // selectedId={selectedIncident?.id}
           />
         </div>
       </div>

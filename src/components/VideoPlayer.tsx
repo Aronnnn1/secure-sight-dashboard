@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useEffect, forwardRef, useImperativeHandle } from 'react';
+import { useEffect } from 'react';
 import Image from 'next/image';
 import { Video } from "@/app/dashboard/page";
 
@@ -18,14 +18,14 @@ export default function VideoPlayer({
   additionalVideos,
   onSelect,
   setIsPlaying,
-  setPlaybackRate,
+  // setPlaybackRate,
   videoRef
 }: {
   video: Video;
   additionalVideos: Video[];
   onSelect: (video: Video) => void;
   setIsPlaying: (val: boolean) => void;
-  setPlaybackRate: (rate: number) => void;
+  // setPlaybackRate: (rate: number) => void;
   videoRef: React.RefObject<HTMLVideoElement | null>;
 }) {
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function VideoPlayer({
     if (videoRef.current) {
       videoRef.current.load();
     }
-  }, [video]);
+  }, [video, setIsPlaying, videoRef]);
 
   return (
     <div className="relative px-6 pt-6">
