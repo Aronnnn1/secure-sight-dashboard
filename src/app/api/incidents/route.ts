@@ -1,10 +1,11 @@
 // /app/api/incidents/route.ts
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server"; // ✅ this line is needed
 
 const prisma = new PrismaClient();
 
-export async function GET() {
+export async function GET(req: NextRequest) { // ✅ typed request param
   const incidents = await prisma.incident.findMany({
     include: {
       camera: true,
@@ -14,7 +15,7 @@ export async function GET() {
     },
   });
 
-  const formatted = incidents.map((i) => ({
+  const formatted = incidents.map((i: any) => ({
     id: i.id,
     videoUrl: `/videos/incident${(i.id % 3) + 1}.mp4`, // mock mapping
     thumbnailUrl: i.thumbnailUrl,

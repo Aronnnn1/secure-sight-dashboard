@@ -53,7 +53,7 @@ export function generateIncidents(): Incident[] {
 
     // Add 3 more from other incidents
     for (let i = 0; i < 3; i++) {
-      let idx = (repeatedIndex + i + 1) % 3;
+      const idx = (repeatedIndex + i + 1) % 3;
       if (!used.has(idx)) {
         incidents.push({
           ...baseIncidents[idx],
