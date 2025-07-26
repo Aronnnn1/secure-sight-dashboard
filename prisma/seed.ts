@@ -2,7 +2,6 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
-  // Step 1: Create Cameras
   const camera1 = await prisma.camera.create({
     data: { name: 'Shop Floor A', location: 'Ground Floor' },
   });
@@ -15,7 +14,6 @@ async function main() {
     data: { name: 'Entrance', location: 'Main Gate' },
   });
 
-  // Step 2: Create Incidents
   const now = new Date();
   const hoursAgo = (h: number) => new Date(now.getTime() - h * 60 * 60 * 1000);
 
@@ -35,10 +33,8 @@ async function main() {
   let incidentIndex = 0;
 
   for (const { camera, repeat } of cameraIncidentPlan) {
-    // Get 2 unique incident types that are not the repeated one
     const uniqueIncidents = incidentMedia.filter((im) => im.id !== repeat);
 
-    // Add the repeated incident twice
     for (let i = 0; i < 2; i++) {
       const start = hoursAgo(24 - incidentIndex * 2);
       const end = new Date(start.getTime() + 10 * 60 * 1000);
@@ -55,7 +51,6 @@ async function main() {
       incidentIndex++;
     }
 
-    // Add the other two incidents once
     for (const im of uniqueIncidents) {
       const start = hoursAgo(24 - incidentIndex * 2);
       const end = new Date(start.getTime() + 10 * 60 * 1000);
